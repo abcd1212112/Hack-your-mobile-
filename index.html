@@ -1,3 +1,10 @@
+# Harmless "You Hacked" Prank Page
+
+This is only a harmless prank webpage for fun. It does NOT hack anything.
+
+## index.html
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,12 +71,29 @@
   </div>
 
   <script>
+    // Vibrate (mobile only)
     if (navigator.vibrate) {
       navigator.vibrate([500, 200, 500]);
     }
 
+    // Fullscreen mode
+    // Blocks touch interactions inside webpage only
+    document.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false });
+    document.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+    document.addEventListener('click', (e) => e.preventDefault());
+
+    // Prevent keyboard actions inside browser
+    document.addEventListener('keydown', (e) => {
+      e.preventDefault();
+    });
+
+    // Prevent context menu
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    // Fullscreen mode
     document.documentElement.requestFullscreen?.();
 
+    // Remove prank after 1 minute
     setTimeout(() => {
       document.getElementById('overlay').style.display = 'none';
       document.body.style.background = 'white';
@@ -86,3 +110,22 @@
 
 </body>
 </html>
+```
+
+## Upload to GitHub Pages
+
+1. Create a repository on urlGitHub[https://github.com](https://github.com)
+2. Upload `index.html`
+3. Open:
+
+   * Settings → Pages
+   * Source → Deploy from branch
+   * Branch → main
+4. Save
+5. Your prank link will be:
+
+```text
+https://yourusername.github.io/repository-name/
+```
+
+Share the link with friends for fun.
